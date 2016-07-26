@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11129.15" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11103.10"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="StopWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,8 +17,61 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RjS-tq-waM">
+                                <items>
+                                    <barButtonItem systemItem="stop" id="s8u-EQ-uUg">
+                                        <connections>
+                                            <action selector="stopAction:" destination="BYZ-38-t0r" id="Jqb-zh-bCQ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="gcK-Dy-kLH"/>
+                                    <barButtonItem systemItem="play" id="Ncd-Qx-eVo">
+                                        <connections>
+                                            <action selector="playAction:" destination="BYZ-38-t0r" id="rJL-Jn-A8Q"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wh-4z-xvh">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="1DQ-VW-Guu"/>
+                                    <constraint firstAttribute="height" constant="200" id="m5v-Ta-Za4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="60"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nv2-1B-D6N">
+                                <items>
+                                    <navigationItem title="Cronómetro" id="xcy-qN-cSE">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="pause" id="1KR-ju-uUC">
+                                            <connections>
+                                                <action selector="pauseAction:" destination="BYZ-38-t0r" id="b7h-2I-7Wg"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="RjS-tq-waM" secondAttribute="bottom" id="2h4-pH-Ry6"/>
+                            <constraint firstItem="nv2-1B-D6N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JDm-nD-jVV"/>
+                            <constraint firstItem="RjS-tq-waM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Le8-Gk-a9s"/>
+                            <constraint firstItem="2wh-4z-xvh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Lx6-kz-QBd"/>
+                            <constraint firstAttribute="trailing" secondItem="RjS-tq-waM" secondAttribute="trailing" id="Rrm-8R-tav"/>
+                            <constraint firstItem="2wh-4z-xvh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TmQ-ft-VqO"/>
+                            <constraint firstItem="nv2-1B-D6N" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="iRa-26-CPA"/>
+                            <constraint firstAttribute="trailing" secondItem="nv2-1B-D6N" secondAttribute="trailing" id="zXP-4P-Bmc"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pauseButton" destination="1KR-ju-uUC" id="HhP-Az-4BP"/>
+                        <outlet property="playButton" destination="Ncd-Qx-eVo" id="1D6-a5-1s1"/>
+                        <outlet property="resultLabel" destination="2wh-4z-xvh" id="afc-MK-Seu"/>
+                        <outlet property="stopButton" destination="s8u-EQ-uUg" id="ao3-6f-0fB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
